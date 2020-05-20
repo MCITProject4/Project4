@@ -21,24 +21,33 @@ import org.apache.hadoop.fs.{FileSystem, Path}
     val calendar_dates_txt = new Path("/home/snehith/Documents/stm/calendar_dates.txt")
     val frequencies_txt = new Path("/home/snehith/Documents/stm/frequencies.txt")
 
-    if (hadoop
-      .exists(stagingarea))
-
+    if (hadoop.exists(stagingarea))
       try {
-        hadoop
-          .delete(stagingarea, true)
-
-        hadoop
-          .mkdirs(stagingarea)
-        hadoop
-          .listStatus(stagingarea)
+        hadoop.delete(stagingarea, true)
+        hadoop.mkdirs(stagingarea)
+        hadoop.listStatus(stagingarea)
         println("PROJECT4 Directory was CREATED\n")
-        hadoop.mkdirs(trips)
-        println("created directory for trips")
       }
       catch {
         case f: FileNotFoundException =>
           println("PROJECT4 PATH CANNOT FIND\n")
       }
 
+<<<<<<< HEAD
+=======
+    hadoop.mkdirs(trips)
+    println("created directory for trips")
+
+    hadoop.mkdirs(calendar_dates)
+    println("created directory for calendar_dates")
+
+
+
+
+
+
+
+
+
+>>>>>>> 066b288af9c680a78ba055b277525787c3349d6b
 }
