@@ -5,15 +5,10 @@ trait ExtTables {
   Class.forName(driverName)
 
   val connection: Connection = DriverManager
-    .getConnection("jdbc:hive2://quickstart.cloudera:10000/fall2019_ishrath;user=ishrathnayeem;password=Faheemnayeem1.")
+                  .getConnection("jdbc:hive2://172.16.129.58:10000/fall2019_srujan;user=srujan;password=srujan")
   val stmt: Statement = connection.createStatement()
-
-  stmt execute """DROP TABLE IF EXISTS ext_trips"""
-  stmt execute """DROP TABLE IF EXISTS ext_frequencies"""
-  stmt execute """DROP TABLE IF EXISTS ext_calendar_dates"""
-  stmt execute """DROP TABLE IF EXISTS enriched_trip"""
-
-  stmt.execute("CREATE EXTERNAL TABLE ext_trips ( " +
+  stmt.execute("DROP TABLE IF EXISTS fall2019_srujan.ext_trips")
+  stmt.execute("CREATE EXTERNAL TABLE fall2019_srujan.ext_trips ( " +
     "route_id              INT,"+
     "service_id            STRING,"+
     "trip_id               STRING,"+
@@ -26,14 +21,19 @@ trait ExtTables {
     " ROW FORMAT DELIMITED " +
     " FIELDS TERMINATED BY ',' " +
     " STORED AS TEXTFILE "+
-    " LOCATION '/user/fall2019/ishrath/project4/trips'"+
+    " LOCATION '/user/fall2019/srujan/project4/trips'"+
     " tblproperties(" +
     "'skip.header.line.count' = '1',"+
     "'serialization.null.format' = '')")
+<<<<<<< HEAD
   println("\ntrips table created\n")
+=======
+  println("trips table created")
 
-  stmt.execute("DROP TABLE IF EXISTS ext_frequencies")
-  stmt.execute("CREATE EXTERNAL TABLE ext_frequencies   (" +
+>>>>>>> 2bc3f6cc7b5bb99b591e0bf6194d9130348d1314
+
+  stmt.execute("DROP TABLE IF EXISTS fall2019_srujan.ext_frequencies")
+  stmt.execute("CREATE EXTERNAL TABLE fall2019_srujan.ext_frequencies   (" +
     " trip_id       STRING ," +
     " start_time    STRING, " +
     " end_time      STRING, " +
@@ -41,10 +41,15 @@ trait ExtTables {
     " ROW FORMAT DELIMITED " +
     " FIELDS TERMINATED BY ','" +
     "STORED AS TEXTFILE" +
-    " location '/user/fall2019/ishrath/project4/frequencies'" +
+    " location '/user/fall2019/srujan/project4/frequencies'" +
     "TBLPROPERTIES ('skip.header.line.count' = '1', 'serialization.null.format' = '')")
+<<<<<<< HEAD
   println("frequencies table created\n")
 
+=======
+  println("frequencies table created")
+  stmt.execute("DROP TABLE IF EXISTS fall2019_srujan.ext_calendar_dates ")
+>>>>>>> 2bc3f6cc7b5bb99b591e0bf6194d9130348d1314
   stmt execute
     """CREATE EXTERNAL TABLE ext_calendar_dates (
       |service_id       STRING,
@@ -54,7 +59,7 @@ trait ExtTables {
       |ROW FORMAT DELIMITED
       |FIELDS TERMINATED BY ','
       |STORED AS TEXTFILE
-      |LOCATION '/user/fall2019/ishrath/project4/calendar_dates'
+      |LOCATION '/user/fall2019/srujan/project4/calendar_dates'
       |TBLPROPERTIES (
       |"skip.header.line.count" = "1",
       |"serialization.null.format" = "")""".stripMargin
@@ -63,9 +68,9 @@ trait ExtTables {
 
   stmt execute """SET hive.exec.dynamic.partition=true"""
   stmt execute """SET hive.exec.dynamic.partition.mode=nonstrict"""
-
+  stmt.execute("DROP TABLE IF EXISTS fall2019_srujan.enriched_trip ")
   stmt execute
-    """CREATE TABLE enriched_trip (
+    """CREATE TABLE fall2019_srujan.enriched_trip (
       |route_id             STRING,
       |service_id	          STRING,
       |trip_id	            STRING,
