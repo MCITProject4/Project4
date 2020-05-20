@@ -10,22 +10,33 @@ class ExtTables {
   stmt.execute("DROP TABLE IF EXISTS fall2019_snehith.ext_trips")
 
   stmt.execute("CREATE EXTERNAL TABLE fall2019_snehith.ext_trips ( " +
-    "route_id INT,"+
-    "service_id STRING,"+
-    "trip_id STRING,"+
-    "trip_headsign STRING,"+
-    "direction_id INT,"+
-    "shape_id INT,"+
+    "route_id              INT,"+
+    "service_id            STRING,"+
+    "trip_id               STRING,"+
+    "trip_headsign         STRING,"+
+    "direction_id          INT,"+
+    "shape_id              INT,"+
     "wheelchair_accessible INT,"+
-    "note_fr STRING,"+
-    "note_en STRING ) " +
+    "note_fr               STRING,"+
+    "note_en               STRING ) " +
     " ROW FORMAT DELIMITED " +
     " FIELDS TERMINATED BY ',' " +
     " STORED AS TEXTFILE "+
     " LOCATION '/user/fall2019/snehith/project4/trips'"+
     " tblproperties(" +
     "'skip.header.line.count' = '1',"+
-    "'serialization.null.format' = '')"
+    "'serialization.null.format' = '')")
 
-  )
+  stmt.execute("DROP TABLE IF EXISTS fall2019_srujan.ext_frequencies")
+  stmt.execute("CREATE EXTERNAL TABLE fall2019_srujan.ext_frequencies   (" +
+    " trip_id       STRING ," +
+    " start_time    STRING, " +
+    " end_time      STRING, " +
+    " headway_secs  STRING)" +
+    " ROW FORMAT DELIMITED " +
+    " FIELDS TERMINATED BY ','" +
+    "STORED AS TEXTFILE" +
+    " location '/user/fall2019/srujan/project4/frequencies'" +
+    "TBLPROPERTIES ('skip.header.line.count' = '1', 'serialization.null.format' = '')")
+  println("frequencies table created")
 }
