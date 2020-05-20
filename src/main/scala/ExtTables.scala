@@ -36,7 +36,7 @@ class ExtTables {
     " ROW FORMAT DELIMITED " +
     " FIELDS TERMINATED BY ','" +
     "STORED AS TEXTFILE" +
-    " location '/user/fall2019/srujan/project4/frequencies'" +
+    " location '/user/fall2019/snehith/project4/frequencies'" +
     "TBLPROPERTIES ('skip.header.line.count' = '1', 'serialization.null.format' = '')")
   println("frequencies table created")
 
@@ -49,7 +49,7 @@ class ExtTables {
       |ROW FORMAT DELIMITED
       |FIELDS TERMINATED BY ','
       |STORED AS TEXTFILE
-      |LOCATION '/user/fall2019/ishrath/project4/calendar_dates'
+      |LOCATION '/user/fall2019/snehith/project4/calendar_dates'
       |TBLPROPERTIES (
       |"skip.header.line.count" = "1",
       |"serialization.null.format" = "")""".stripMargin
@@ -60,7 +60,7 @@ class ExtTables {
   stmt execute """SET hive.exec.dynamic.partition.mode=nonstrict"""
 
   stmt execute
-    """CREATE TABLE fall2019_ishrath.enriched_trip (
+    """CREATE TABLE fall2019_snehith.enriched_trip (
       |route_id             STRING,
       |service_id	          STRING,
       |trip_id	            STRING,
@@ -69,8 +69,8 @@ class ExtTables {
       |shape_id	            INT,
       |note_fr             	STRING,
       |note_en             	STRING,
-      |start_time	          TIMESTAMP,
-      |end_time	            TIMESTAMP,
+      |start_time	          INT,
+      |end_time	            INT,
       |headway_secs        	INT,
       |date	                INT,
       |exception_type      	INT
