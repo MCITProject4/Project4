@@ -7,19 +7,19 @@ import org.apache.hadoop.fs.{FileSystem, Path}
 
     val conf = new Configuration()
 
-    conf.addResource(new Path("/home/bd-user/opt/hadoop-2.7.3/etc/cloudera/core-site.xml"))
-    conf.addResource(new Path("/home/bd-user/opt/hadoop-2.7.3/etc/cloudera/hdfs-site.xml"))
+    conf.addResource(new Path("/Users/ishrathnayeem/Hadoop/opt/hadoop/etc/cloudera/core-site.xml"))
+    conf.addResource(new Path("/Users/ishrathnayeem/Hadoop/opt/hadoop/etc/cloudera/hdfs-site.xml"))
     val hadoop = FileSystem.get(conf)
 
-    val stagingarea = new Path("/user/fall2019/snehith/project4")
+    val stagingarea = new Path("/user/fall2019/ishrath/project4")
 
-    val trips = new Path("/user/fall2019/snehith/project4/trips")
-    val calendar_dates = new Path("/user/fall2019/snehith/project4/calendar_dates")
-    val  frequencies = new Path("/user/fall2019/snehith/project4/frequencies")
+    val trips = new Path("/user/fall2019/ishrath/project4/trips")
+    val calendar_dates = new Path("/user/fall2019/ishrath/project4/calendar_dates")
+    val  frequencies = new Path("/user/fall2019/ishrath/project4/frequencies")
 
-    val trips_txt = new Path("/home/snehith/Documents/stm/trips.txt")
-    val calendar_dates_txt = new Path("/home/snehith/Documents/stm/calendar_dates.txt")
-    val frequencies_txt = new Path("/home/snehith/Documents/stm/frequencies.txt")
+    val trips_txt = new Path("/Users/ishrathnayeem/IntelliJ IDEA/mcit/gtfs_stm/trips.txt")
+    val calendar_dates_txt = new Path("/Users/ishrathnayeem/IntelliJ IDEA/mcit/gtfs_stm/calendar_dates.txt")
+    val frequencies_txt = new Path("/user/fall2019/ishrath/project4/frequencies/frequencies.txt")
 
     if (hadoop.exists(stagingarea))
       try {
