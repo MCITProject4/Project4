@@ -11,15 +11,15 @@ import org.apache.hadoop.fs.{FileSystem, Path}
     conf.addResource(new Path("/home/bd-user/opt/hadoop-2.7.3/etc/cloudera/hdfs-site.xml"))
     val hadoop = FileSystem.get(conf)
 
-    val stagingarea = new Path("/user/fall2019/srujan/project4")
+    val stagingarea = new Path("/user/fall2019/snehith/project4")
 
-    val trips = new Path("/user/fall2019/srujan/project4/trips")
-    val calendar_dates = new Path("/user/fall2019/srujan/project4/calendar_dates")
-    val  frequencies = new Path("/user/fall2019/srujan/project4/frequencies")
+    val trips = new Path("/user/fall2019/snehith/project4/trips")
+    val calendar_dates = new Path("/user/fall2019/snehith/project4/calendar_dates")
+    val  frequencies = new Path("/user/fall2019/snehith/project4/frequencies")
 
-    val trips_txt = new Path("/home/bd-user/Downloads/trips.txt")
-    val calendar_dates_txt = new Path("/home/bd-user/Downloads/calendar_dates.txt")
-    val frequencies_txt = new Path("/home/bd-user/Downloads/frequencies.txt")
+    val trips_txt = new Path("/home/snehith/Documents/stm/trips.txt")
+    val calendar_dates_txt = new Path("/home/snehith/Documents/stm/calendar_dates.txt")
+    val frequencies_txt = new Path("/home/snehith/Documents/stm/frequencies.txt")
 
     if (hadoop
       .exists(stagingarea))
@@ -27,25 +27,22 @@ import org.apache.hadoop.fs.{FileSystem, Path}
       try {
         hadoop
           .delete(stagingarea, true)
+        
+        hadoop
+          .mkdirs(stagingarea)
         hadoop
           .listStatus(stagingarea)
-        println("FAILED!! to DELETE PROJECT4 Directory")
+        println("PROJECT4 Directory was CREATED\n")
+        hadoop.mkdirs(trips)
+        println("created directory for trips")
       }
       catch {
         case f: FileNotFoundException =>
-          println("PROJECT4 Directory was DELETED!\n")
+          println("PROJECT4 PATH CANNOT FIND\n")
       }
 
-    try {
-      hadoop
-        .mkdirs(stagingarea)
-      hadoop
-        .listStatus(stagingarea)
-      println("PROJECT4 Directory was CREATED\n")
-    }
-    catch {
-      case f: FileNotFoundException =>
-        println("FAILED!! to CREATE PROJECT4 Directory\n")
-    }
+
+
+
 
 }
