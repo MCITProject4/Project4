@@ -6,24 +6,24 @@ import org.apache.hadoop.fs.{FileSystem, Path}
   trait DataHadoop extends App {
 
     val conf = new Configuration()
-    conf.addResource(new Path("/home/bd-user/opt/hadoop-2.7.3/etc/cloudera/core-site.xml"))
-    conf.addResource(new Path("/home/bd-user/opt/hadoop-2.7.3/etc/cloudera/hdfs-site.xml"))
+    conf.addResource(new Path("/Users/ishrathnayeem/Hadoop/opt/hadoop/etc/cloudera/core-site.xml"))
+    conf.addResource(new Path("/Users/ishrathnayeem/Hadoop/opt/hadoop/etc/cloudera/hdfs-site.xml"))
     val hadoop = FileSystem.get(conf)
 
-    val stagingarea = new Path("/user/fall2019/snehith/project4")
+    val stagingarea = new Path("/user/fall2019/ishrath/project4")
 
-    val trips = new Path("/user/fall2019/snehith/project4/trips")
-    val calendar_dates = new Path("/user/fall2019/snehith/project4/calendar_dates")
-    val frequencies = new Path("/user/fall2019/snehith/project4/frequencies")
+    val trips = new Path("/user/fall2019/ishrath/project4/trips")
+    val calendar_dates = new Path("/user/fall2019/ishrath/project4/calendar_dates")
+    val frequencies = new Path("/user/fall2019/ishrath/project4/frequencies")
 
-    val trips_txt = new Path("/home/snehith/Documents/stm/trips.txt")
-    val calendar_dates_txt = new Path("/home/snehith/Documents/stm/calendar_dates.txt")
-    val frequencies_txt = new Path("/home/snehith/Documents/stm/frequencies.txt")
+    val trips_txt = new Path("/Users/ishrathnayeem/IntelliJ IDEA/mcit/gtfs_stm/trips.txt")
+    val calendar_dates_txt = new Path("/Users/ishrathnayeem/IntelliJ IDEA/mcit/gtfs_stm/calendar_dates.txt")
+    val frequencies_txt = new Path("/Users/ishrathnayeem/IntelliJ IDEA/mcit/gtfs_stm/frequencies.txt")
 
     val driverName: String = "org.apache.hive.jdbc.HiveDriver"
     Class.forName(driverName)
     val connection: Connection = DriverManager
-      .getConnection("jdbc:hive2://172.16.129.58:10000/snehith;user=snehith;password=snehith")
+      .getConnection("jdbc:hive2://quickstart.cloudera:10000/fall2019_ishrath;user=ishrathnayeem;password=Faheemnayeem1.")
     val stmt: Statement = connection.createStatement()
 
     def Staging() {
@@ -32,37 +32,38 @@ import org.apache.hadoop.fs.{FileSystem, Path}
           hadoop.delete(stagingarea, true)
           hadoop.mkdirs(stagingarea)
           hadoop.listStatus(stagingarea)
-          println("PROJECT4 Directory was CREATED\n")
+          println("\nPROJECT4 Directory was CREATED\n")
         }
         catch {
           case _: FileNotFoundException =>
             println("PROJECT4 PATH CANNOT FIND\n")
         }
+
       hadoop.mkdirs(trips)
-      println("created directory for trips")
+      println("Created directory for trips")
 
       hadoop.mkdirs(calendar_dates)
-      println("created directory for calendar_dates")
+      println("Created directory for calendar_dates")
 
       hadoop.mkdirs(frequencies)
-      println("created directory for frequencies")
+      println("Created directory for frequencies\n")
     }
-    def CopyFiles(): Unit =
-    {
+
+    def CopyFiles(): Unit = {
       if (hadoop.exists(stagingarea)) {
-        hadoop.copyFromLocalFile(trips_txt,trips)
+        hadoop.copyFromLocalFile(trips_txt, trips)
         println("trips.txt is copied to the path")
       }
       else println("project4 not found")
-      if (hadoop.exists(calendar_dates))
-      {
+      if (hadoop.exists(calendar_dates)) {
         hadoop.copyFromLocalFile(calendar_dates_txt, calendar_dates)
-        println("calendar_dates.txt is copied to the path")}
-      else println("path of calendar_dates not found")
-      if (hadoop.exists(frequencies)){
-        hadoop.copyFromLocalFile(frequencies_txt,frequencies)
-        println("frequencies.txt file added")
+        println("calendar_dates.txt is copied to the path")
       }
-      else println("path not found")
+      else println("path of calendar_dates not found")
+      if (hadoop.exists(frequencies)) {
+        hadoop.copyFromLocalFile(frequencies_txt, frequencies)
+        println("frequencies.txt is copied to the path\n")
+      }
+      else println("path not found\n")
     }
   }
