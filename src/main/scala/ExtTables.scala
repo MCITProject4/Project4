@@ -42,7 +42,7 @@ class ExtTables {
     "STORED AS TEXTFILE" +
     " location '/user/fall2019/ishrath/project4/frequencies'" +
     "TBLPROPERTIES ('skip.header.line.count' = '1', 'serialization.null.format' = '')")
-  println("frequencies table created")
+  println("\nfrequencies table created\n")
 
   stmt execute
     """CREATE EXTERNAL TABLE ext_calendar_dates (

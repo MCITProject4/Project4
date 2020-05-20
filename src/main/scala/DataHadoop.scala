@@ -1,5 +1,4 @@
 import java.io.FileNotFoundException
-
 import org.apache.hadoop.conf.Configuration
 import org.apache.hadoop.fs.{FileSystem, Path}
 
@@ -34,11 +33,11 @@ import org.apache.hadoop.fs.{FileSystem, Path}
       }
 
     hadoop.mkdirs(trips)
-    println("created directory for trips")
+    println("created directory for trips\n")
 
     hadoop.mkdirs(calendar_dates)
-    println("created directory for calendar_dates")
+    println("created directory for calendar_dates\n")
 
     hadoop.mkdirs(frequencies)
-    println("created directory for frequencies")
+    println("created directory for frequencies\n")
 }
