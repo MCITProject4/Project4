@@ -6,7 +6,6 @@ import org.apache.hadoop.fs.{FileSystem, Path}
   trait DataHadoop extends App {
 
     val conf = new Configuration()
-
     conf.addResource(new Path("/home/bd-user/opt/hadoop-2.7.3/etc/cloudera/core-site.xml"))
     conf.addResource(new Path("/home/bd-user/opt/hadoop-2.7.3/etc/cloudera/hdfs-site.xml"))
     val hadoop = FileSystem.get(conf)
@@ -36,7 +35,7 @@ import org.apache.hadoop.fs.{FileSystem, Path}
           println("PROJECT4 Directory was CREATED\n")
         }
         catch {
-          case f: FileNotFoundException =>
+          case _: FileNotFoundException =>
             println("PROJECT4 PATH CANNOT FIND\n")
         }
       hadoop.mkdirs(trips)
@@ -53,16 +52,13 @@ import org.apache.hadoop.fs.{FileSystem, Path}
       if (hadoop.exists(stagingarea)) {
         hadoop.copyFromLocalFile(trips_txt,trips)
         println("trips.txt is copied to the path")
-
       }
       else println("project4 not found")
-
       if (hadoop.exists(calendar_dates))
       {
         hadoop.copyFromLocalFile(calendar_dates_txt, calendar_dates)
         println("calendar_dates.txt is copied to the path")}
       else println("path of calendar_dates not found")
-
       if (hadoop.exists(frequencies)){
         hadoop.copyFromLocalFile(frequencies_txt,frequencies)
         println("frequencies.txt file added")

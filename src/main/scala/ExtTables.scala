@@ -1,12 +1,7 @@
-import java.sql.{Connection, DriverManager, Statement}
-
 class ExtTables extends DataHadoop {
-
-
 
   def CreateTables() {
     stmt.execute("DROP TABLE IF EXISTS fall2019_snehith.ext_trips")
-
     stmt.execute("CREATE EXTERNAL TABLE fall2019_snehith.ext_trips ( " +
       "route_id              INT," +
       "service_id            STRING," +
@@ -34,10 +29,9 @@ class ExtTables extends DataHadoop {
       " headway_secs  STRING)" +
       " ROW FORMAT DELIMITED " +
       " FIELDS TERMINATED BY ','" +
-      "STORED AS TEXTFILE" +
+      " STORED AS TEXTFILE" +
       " location '/user/fall2019/snehith/project4/frequencies'" +
-      "TBLPROPERTIES ('skip.header.line.count' = '1', 'serialization.null.format' = '')")
-
+      " TBLPROPERTIES ('skip.header.line.count' = '1', 'serialization.null.format' = '')")
     println("frequencies table created\n")
 
     stmt.execute("DROP TABLE IF EXISTS fall2019_snehith.ext_calendar_dates")
@@ -54,10 +48,8 @@ class ExtTables extends DataHadoop {
         |TBLPROPERTIES (
         |"skip.header.line.count" = "1",
         |"serialization.null.format" = "")""".stripMargin
-
     println("ext_calendar_dates TABLE was CREATED\n")
   }
-
   def ManagedTable() {
     stmt execute """SET hive.exec.dynamic.partition=true"""
     stmt execute """SET hive.exec.dynamic.partition.mode=nonstrict"""
@@ -83,7 +75,6 @@ class ExtTables extends DataHadoop {
         |ROW FORMAT DELIMITED
         |FIELDS TERMINATED BY ','
         |STORED AS PARQUET""".stripMargin
-
     println("enriched_trip TABLE was CREATED\n")
   }
 
