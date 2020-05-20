@@ -33,21 +33,12 @@ import org.apache.hadoop.fs.{FileSystem, Path}
           println("PROJECT4 PATH CANNOT FIND\n")
       }
 
-<<<<<<< HEAD
-=======
     hadoop.mkdirs(trips)
     println("created directory for trips")
 
     hadoop.mkdirs(calendar_dates)
     println("created directory for calendar_dates")
 
-
-
-
-
-
-
-
-
->>>>>>> 066b288af9c680a78ba055b277525787c3349d6b
+    hadoop.mkdirs(frequencies)
+    println("created directory for frequencies")
 }
