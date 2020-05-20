@@ -27,8 +27,8 @@ class ExtTables {
     "'skip.header.line.count' = '1',"+
     "'serialization.null.format' = '')")
 
-  stmt.execute("DROP TABLE IF EXISTS fall2019_srujan.ext_frequencies")
-  stmt.execute("CREATE EXTERNAL TABLE fall2019_srujan.ext_frequencies   (" +
+  stmt.execute("DROP TABLE IF EXISTS fall2019_snehith.ext_frequencies")
+  stmt.execute("CREATE EXTERNAL TABLE fall2019_snehith.ext_frequencies   (" +
     " trip_id       STRING ," +
     " start_time    STRING, " +
     " end_time      STRING, " +
