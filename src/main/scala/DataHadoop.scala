@@ -41,8 +41,4 @@ import org.apache.hadoop.fs.{FileSystem, Path}
           println("PROJECT4 PATH CANNOT FIND\n")
       }
 
-
-
-
-
 }
