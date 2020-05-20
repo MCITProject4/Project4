@@ -1,6 +1,6 @@
 import java.sql.{Connection, DriverManager, Statement}
 
-class ExtTables {
+trait ExtTables {
   val driverName: String = "org.apache.hive.jdbc.HiveDriver"
   Class.forName(driverName)
 
@@ -30,6 +30,7 @@ class ExtTables {
     " tblproperties(" +
     "'skip.header.line.count' = '1',"+
     "'serialization.null.format' = '')")
+  println("\ntrips table created\n")
 
   stmt.execute("DROP TABLE IF EXISTS ext_frequencies")
   stmt.execute("CREATE EXTERNAL TABLE ext_frequencies   (" +
@@ -42,7 +43,7 @@ class ExtTables {
     "STORED AS TEXTFILE" +
     " location '/user/fall2019/ishrath/project4/frequencies'" +
     "TBLPROPERTIES ('skip.header.line.count' = '1', 'serialization.null.format' = '')")
-  println("\nfrequencies table created\n")
+  println("frequencies table created\n")
 
   stmt execute
     """CREATE EXTERNAL TABLE ext_calendar_dates (
@@ -58,7 +59,7 @@ class ExtTables {
       |"skip.header.line.count" = "1",
       |"serialization.null.format" = "")""".stripMargin
 
-  println("ext_calendar_dates TABLE was CREATED\n")
+  println("calendar_dates table was created\n")
 
   stmt execute """SET hive.exec.dynamic.partition=true"""
   stmt execute """SET hive.exec.dynamic.partition.mode=nonstrict"""
@@ -84,5 +85,5 @@ class ExtTables {
       |FIELDS TERMINATED BY ','
       |STORED AS PARQUET""".stripMargin
 
-  println("enriched_trip TABLE was CREATED\n")
+  println("enriched_trip table was created\n")
 }

@@ -14,7 +14,7 @@ import org.apache.hadoop.fs.{FileSystem, Path}
 
     val trips = new Path("/user/fall2019/ishrath/project4/trips")
     val calendar_dates = new Path("/user/fall2019/ishrath/project4/calendar_dates")
-    val  frequencies = new Path("/user/fall2019/ishrath/project4/frequencies")
+    val frequencies = new Path("/user/fall2019/ishrath/project4/frequencies")
 
     val trips_txt = new Path("/Users/ishrathnayeem/IntelliJ IDEA/mcit/gtfs_stm/trips.txt")
     val calendar_dates_txt = new Path("/Users/ishrathnayeem/IntelliJ IDEA/mcit/gtfs_stm/calendar_dates.txt")
@@ -28,7 +28,7 @@ import org.apache.hadoop.fs.{FileSystem, Path}
         println("PROJECT4 Directory was CREATED\n")
       }
       catch {
-        case f: FileNotFoundException =>
+        case _: FileNotFoundException =>
           println("PROJECT4 PATH CANNOT FIND\n")
       }
 
@@ -40,4 +40,4 @@ import org.apache.hadoop.fs.{FileSystem, Path}
 
     hadoop.mkdirs(frequencies)
     println("created directory for frequencies\n")
-}
+  }

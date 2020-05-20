@@ -1,5 +1,5 @@
-object Main extends ExtTables with DataHadoop {
 
+object Main extends DataHadoop with ExtTables {
   if (hadoop.exists(stagingarea)) {
     hadoop.copyFromLocalFile(trips_txt, trips)
     println("trips.txt is copied to the path\n")
