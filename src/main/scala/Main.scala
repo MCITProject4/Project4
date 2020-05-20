@@ -19,7 +19,7 @@ if (hadoop.exists(frequencies)){
 }
 else println("path not found")
   stmt.execute("SET hive.exec.dynamic.partition.mode=nonstrict")
-  stmt.execute("INSERT OVERWRITE TABLE fall2019_srujan.enriched_trip " +
+  stmt.execute("INSERT OVERWRITE TABLE enriched_trip " +
     "PARTITION(wheelchair_accessible) " +
     "SELECT t1.route_id,t1.service_id,t1.trip_id,t1.trip_headsign,t1.direction_id," +
     "t1.shape_id,t1.note_fr,t1.note_en,c1.`date`,c1.exception_type," +

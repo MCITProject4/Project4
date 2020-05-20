@@ -7,7 +7,11 @@ class ExtTables {
   val connection: Connection = DriverManager
     .getConnection("jdbc:hive2://quickstart.cloudera:10000/fall2019_ishrath;user=ishrathnayeem;password=Faheemnayeem1.")
   val stmt: Statement = connection.createStatement()
-  stmt.execute("DROP TABLE IF EXISTS ext_trips")
+
+  stmt execute """DROP TABLE IF EXISTS ext_trips"""
+  stmt execute """DROP TABLE IF EXISTS ext_frequencies"""
+  stmt execute """DROP TABLE IF EXISTS ext_calendar_dates"""
+  stmt execute """DROP TABLE IF EXISTS enriched_trip"""
 
   stmt.execute("CREATE EXTERNAL TABLE ext_trips ( " +
     "route_id              INT,"+

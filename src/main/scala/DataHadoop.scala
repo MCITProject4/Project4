@@ -19,7 +19,7 @@ import org.apache.hadoop.fs.{FileSystem, Path}
 
     val trips_txt = new Path("/Users/ishrathnayeem/IntelliJ IDEA/mcit/gtfs_stm/trips.txt")
     val calendar_dates_txt = new Path("/Users/ishrathnayeem/IntelliJ IDEA/mcit/gtfs_stm/calendar_dates.txt")
-    val frequencies_txt = new Path("/user/fall2019/ishrath/project4/frequencies/frequencies.txt")
+    val frequencies_txt = new Path("/Users/ishrathnayeem/IntelliJ IDEA/mcit/gtfs_stm/frequencies.txt")
 
     if (hadoop.exists(stagingarea))
       try {
