@@ -27,7 +27,7 @@ import org.apache.hadoop.fs.{FileSystem, Path}
       try {
         hadoop
           .delete(stagingarea, true)
-        
+
         hadoop
           .mkdirs(stagingarea)
         hadoop
